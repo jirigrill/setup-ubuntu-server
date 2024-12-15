@@ -43,7 +43,7 @@ sudo apt install -y \
     net-tools \
     dnsutils \
     mtr \
-    netcat \
+    netcat-traditional \
     rsync
 check_status "Network tools"
 
