@@ -17,10 +17,11 @@ print_message "Configuring Docker daemon..."
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json > /dev/null << EOF
 {
+  "log-driver": "json-file",
   "log-opts": {
-    "time-format": "RFC3339"
-  },
-  "timezone": "${TIMEZONE}"
+    "max-size": "10m",
+    "max-file": "3"
+  }
 }
 EOF
 
@@ -29,9 +30,10 @@ sudo systemctl start docker
 sudo systemctl enable docker
 check_status "Docker service"
 
-# Add current user to docker group
-sudo usermod -aG docker $USER
-check_status "User group modification"
+# Add current user to docker group (now that Docker is installed)
+print_message "Adding user to docker group..."
+sudo usermod -aG docker ${USERNAME}
+check_status "Docker group modification"
 
 # Install Docker Compose
 print_message "Installing Docker Compose..."
