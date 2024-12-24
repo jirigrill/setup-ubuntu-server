@@ -23,7 +23,7 @@ A collection of shell scripts to automate the setup of a Linux development envir
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/dev-setup
+git clone https://github.com/jirigrill/setup-ubuntu-server.git
 cd dev-setup
 ```
 
